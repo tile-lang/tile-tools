@@ -1,0 +1,25 @@
+{
+  "name": "tile",
+  "displayName": "tile",
+  "description": "tile language extension",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.93.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "tile",
+      "aliases": ["tile", "tile"],
+      "extensions": [".tile",".tl"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "tile",
+      "scopeName": "source.tile",
+      "path": "./syntaxes/tile.tmLanguage.json"
+    }]
+  }
+}

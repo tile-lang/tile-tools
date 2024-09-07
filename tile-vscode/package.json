@@ -1,0 +1,17 @@
+{
+  "name": "tile-vscode",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "yo": "yo code"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "generator-code": "^1.11.1",
+    "yo": "^5.0.0"
+  }
+}

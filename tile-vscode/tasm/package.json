@@ -1,0 +1,25 @@
+{
+  "name": "tasm",
+  "displayName": "tasm",
+  "description": "tile-tasm-language",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.92.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "tasm",
+      "aliases": ["tasm", "tasm"],
+      "extensions": [".tasm"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "tasm",
+      "scopeName": "source.tasm",
+      "path": "./syntaxes/tasm.tmLanguage.json"
+    }]
+  }
+}
