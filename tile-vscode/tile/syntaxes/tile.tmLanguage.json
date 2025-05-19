@@ -1,98 +1,125 @@
 {
-	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-	"name": "tile",
-	"patterns": [
-		{
-			"include": "#keywords"
-		},
-		{
-			"include": "#strings"
-		},
-		{
-			"include": "#comments"
-		},
-		{
-			"include": "#characters"
-		}
-	],
-	"repository": {
-		"keywords": {
-			"patterns": [{
-				"name": "keyword.control.tile",
-				"match": "\\b(if|else|while|for|func|return|native|tasm|int|float|char|bool|string|true|false|void|ci8|ci16|ci32|ci64|cu8|cu16|cu32|cu64|cf32|cf64|cvoid|break|continue|)\\b"
-			}]
-		},
-		"strings": {
-			"name": "string.quoted.double.tile",
-			"begin": "\"",
-			"end": "\"",
-			"patterns": [
-				{
-					"name": "constant.character.escape.tile",
-					"match": "\\\\."
-				}
-			]
-		},
-		"comments": {
-			"patterns": [
-				{
-					"name": "comment.block.tile",
-					"begin": "(\\/\\*)",
-					"beginCaptures": {
-						"1": {
-							"name": "punctuation.definition.comment.tile"
-						}
-					},
-					"end": "(\\*\\/)",
-					"endCaptures": {
-						"1": {
-							"name": "punctuation.definition.comment.tile"
-						}
-					}
-				},
-				{
-					"name": "comment.line.double-slash.tile",
-					"begin": "(\\/\\/)",
-					"beginCaptures": {
-						"1": {
-							"name": "punctuation.definition.comment.tile"
-						}
-					},
-					"end": "(?:\\n|$)"
-				}
-			]
-		},
-		"numbers": {
-			"patterns": [
-				{  
-					"name": "constant.character.decimal.tasm",
-					"match": "\\b[0-9]+\\b"
-				},
-				{  
-					"name": "constant.character.hexadecimal.tasm",
-					"match": "\\b(0x)(?i)[A-F0-9]+\\b"
-				},
-				{  
-					"name": "constant.character.binary.tasm",
-					"match": "\\b(?i)(0|1)+b\\b"
-				},
-				{
-					"name": "constant.character.float.tasm",
-					"match": "\\b[0-9]+\\.[0-9]+([eE][-+]?[0-9]+)?\\b"
-				}
-			]
-		},
-		"characters": {
-			"name": "constant.character.tasm",
-			"begin": "'",
-			"end": "'",
-			"patterns": [
-				{
-					"name": "constant.character.escape.tasm",
-					"match": "\\\\."
-				}
-			]
-		}
-	},
-	"scopeName": "source.tile"
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "tile",
+    "patterns": [
+        {
+            "include": "#keywords"
+        },
+        {
+            "include": "#strings"
+        },
+        {
+            "include": "#comments"
+        },
+        {
+            "include": "#characters"
+        },
+        {
+            "include": "#types"
+        }
+    ],
+    "repository": {
+        "keywords": {
+            "patterns": [
+                {
+                    "name": "keyword.control.tile",
+                    "match": "\\b(if|else|while|for|func|return|native|tasm|int|float|char|bool|string|true|false|void|ci8|ci16|ci32|ci64|cu8|cu16|cu32|cu64|cf32|cf64|cvoid|break|continue|type|import)\\b"
+                }
+            ]
+        },
+        "strings": {
+            "name": "string.quoted.double.tile",
+            "begin": "\"",
+            "end": "\"",
+            "patterns": [
+                {
+                    "name": "constant.character.escape.tile",
+                    "match": "\\\\."
+                }
+            ]
+        },
+        "comments": {
+            "patterns": [
+                {
+                    "name": "comment.block.tile",
+                    "begin": "(\\/\\*)",
+                    "beginCaptures": {
+                        "1": {
+                            "name": "punctuation.definition.comment.tile"
+                        }
+                    },
+                    "end": "(\\*\\/)",
+                    "endCaptures": {
+                        "1": {
+                            "name": "punctuation.definition.comment.tile"
+                        }
+                    }
+                },
+                {
+                    "name": "comment.line.double-slash.tile",
+                    "begin": "(\\/\\/)",
+                    "beginCaptures": {
+                        "1": {
+                            "name": "punctuation.definition.comment.tile"
+                        }
+                    },
+                    "end": "(?:\\n|$)"
+                }
+            ]
+        },
+        "numbers": {
+            "patterns": [
+                {
+                    "name": "constant.character.decimal.tasm",
+                    "match": "\\b[0-9]+\\b"
+                },
+                {
+                    "name": "constant.character.hexadecimal.tasm",
+                    "match": "\\b(0x)(?i)[A-F0-9]+\\b"
+                },
+                {
+                    "name": "constant.character.binary.tasm",
+                    "match": "\\b(?i)(0|1)+b\\b"
+                },
+                {
+                    "name": "constant.character.float.tasm",
+                    "match": "\\b[0-9]+\\.[0-9]+([eE][-+]?[0-9]+)?\\b"
+                }
+            ]
+        },
+        "characters": {
+            "name": "constant.character.tasm",
+            "begin": "'",
+            "end": "'",
+            "patterns": [
+                {
+                    "name": "constant.character.escape.tasm",
+                    "match": "\\\\."
+                }
+            ]
+        },
+        "types": {
+            "patterns": [
+                {
+                    "name": "storage.type.user-defined.tile",
+                    "match": "\\btype\\s+([A-Z][a-zA-Z0-9_]*)\\b",
+                    "captures": {
+                        "1": {
+                            "name": "entity.name.type.tile"
+                        }
+                    }
+                },
+                {
+                    "name": "storage.type.user-reference.tile",
+                    "match": "(:|\\b)\\s*([A-Z][a-zA-Z0-9_]*)\\b",
+                    "captures": {
+                        "2": {
+                            "name": "entity.name.type.tile"
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    "scopeName": "source.tile"
 }
